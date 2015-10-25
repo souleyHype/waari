@@ -1,0 +1,16 @@
+# Ansible managed: /Users/souley/Documents/Projects/Waari_Project/waari_api/railsbox/ansible/roles/postgresql/templates/database.yml.j2 modified on 2015-10-21 19:09:38 by souley on Souleymanes-MBP.home
+
+default: &default
+  adapter: postgresql
+  pool: 5
+
+development:
+  <<: *default
+  database: waari
+
+  username: vagrant
+  password: None
+
+test:
+  <<: *default
+  database: waari_test

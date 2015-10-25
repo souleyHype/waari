@@ -1,0 +1,25 @@
+---
+- hosts: vm
+  roles:
+    - swap
+
+- hosts: all
+  gather_facts: no
+  roles:
+    - { role: apt_proxy, when: use_apt_proxy }
+  tasks:
+    - apt: update_cache=yes
+
+- hosts: mysql
+  roles:
+    - mysql
+
+
+- hosts: application
+  handlers:
+  roles:
+    - base
+    - { role: ruby, tags: ruby }
+    - vim
+    - webserver
+
